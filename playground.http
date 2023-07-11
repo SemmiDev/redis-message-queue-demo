@@ -1,0 +1,33 @@
+### create article
+POST http://localhost:8080/articles
+Accept: application/json
+Content-Type: application/json
+
+{
+  "title": "title 8",
+  "content": "content 8"
+}
+
+### get article
+GET http://localhost:8080/articles/title-7
+
+### subscribe
+POST http://localhost:8080/subscriptions
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email": "dev@gmail.com"
+}
+
+###
+GET http://localhost:8080/articles/title-8?utm_campaign=newsletter&utm_medium=email&utm_source=newsletter
+Accept: application/json
+
+### analytics
+GET http://localhost:8080/analytics/top-most-read?n=5
+Accept: application/json
+
+### analytics
+GET http://localhost:8080/analytics/top-clicked-via-email?n=5
+Accept: application/json
