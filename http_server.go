@@ -22,11 +22,8 @@ func NewServer(
 	articleAnalyticRepo ArticleAnalyticRepository,
 	taskDistributor TaskDistributor,
 ) *Server {
-	r := chi.NewRouter()
 
-	r.Use(middleware.Logger)
-	r.Use(middleware.RequestID)
-	r.Use(middleware.RealIP)
+	r := chi.NewRouter()
 	r.Use(middleware.Recoverer)
 
 	s := &Server{

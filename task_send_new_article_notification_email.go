@@ -31,8 +31,7 @@ func (distributor *RedisTaskDistributor) DistributeTaskSendNewArticleNotificatio
 		return fmt.Errorf("failed to enqueue task: %w", err)
 	}
 
-	log.Info().Str("type", task.Type()).Bytes("payload", task.Payload()).
-		Str("queue", info.Queue).Int("max_retry", info.MaxRetry).Msg("enqueued task")
+	log.Info().Str("type", task.Type()).Str("queue", info.Queue).Int("max_retry", info.MaxRetry).Msg("enqueued task")
 	return nil
 }
 
@@ -73,7 +72,7 @@ func (processor *RedisTaskProcessor) ProcessTaskSendNewArticleNotificationEmail(
 		return fmt.Errorf("failed to send verify email: %w", err)
 	}
 
-	log.Info().Str("type", task.Type()).Bytes("payload", task.Payload()).Msg("processed task")
+	log.Info().Str("type", task.Type()).Msg("processed task")
 
 	return nil
 }

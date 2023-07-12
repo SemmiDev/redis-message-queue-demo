@@ -5,7 +5,6 @@ import (
 	"github.com/hibiken/asynq"
 	"github.com/redis/go-redis/v9"
 	"github.com/rs/zerolog/log"
-	"github.com/techschool/simplebank/mail"
 )
 
 const (
@@ -25,7 +24,7 @@ type RedisTaskProcessor struct {
 	articleRepo               ArticleRepository
 	articleSubscriberRepo     ArticleSubscriberRepository
 	articleAnalyticRepository ArticleAnalyticRepository
-	mailer                    mail.EmailSender
+	mailer                    EmailSender
 }
 
 func NewRedisTaskProcessor(
@@ -33,7 +32,7 @@ func NewRedisTaskProcessor(
 	articleRepo ArticleRepository,
 	articleSubscriberRepo ArticleSubscriberRepository,
 	articleAnalyticRepository ArticleAnalyticRepository,
-	mailer mail.EmailSender,
+	mailer EmailSender,
 ) TaskProcessor {
 	logger := NewLogger()
 	redis.SetLogger(logger)

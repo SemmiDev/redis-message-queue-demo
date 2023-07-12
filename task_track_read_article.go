@@ -32,7 +32,7 @@ func (distributor *RedisTaskDistributor) DistributeTaskTrackReadArticle(
 		return fmt.Errorf("failed to enqueue task: %w", err)
 	}
 
-	log.Info().Str("type", task.Type()).Bytes("payload", task.Payload()).
+	log.Info().Str("type", task.Type()).
 		Str("queue", info.Queue).Int("max_retry", info.MaxRetry).Msg("enqueued task")
 	return nil
 }
@@ -46,7 +46,7 @@ func (processor *RedisTaskProcessor) ProcessTaskTrackReadArticle(_ context.Conte
 	event := GetEventFromParams(payload.QueryParams)
 	processor.articleAnalyticRepository.Create(payload.ArticleID, event)
 
-	log.Info().Str("type", task.Type()).Bytes("payload", task.Payload()).Msg("processed task")
+	log.Info().Str("type", task.Type()).Msg("processed task")
 
 	return nil
 }
